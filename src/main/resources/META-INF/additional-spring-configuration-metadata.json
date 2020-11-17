@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "application.hostingPath",
+      "type": "java.lang.String",
+      "description": "Path mounted to image, from which files are hosted."
+  }
+] }

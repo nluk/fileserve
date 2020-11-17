@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:insert="header :: header"/>
+</head>
+<body>
+<ul>
+    <li th:unless="${isRoot}">
+        <a th:href="@{|/browse?path=${levelUp}|}">
+            <p>...</p>
+        </a>
+    </li>
+    <li th:each="path : ${paths}">
+        <a th:if="${path.isDirectory()}" th:href="@{|/browse?path=${@urlFormatter.format(path)}|}">
+            <p th:text="${@displayPathFormatter.format(path)}"></p>
+        </a>
+        <a th:unless="${path.isDirectory()}" th:href="@{|/requestDownload?path=${@urlFormatter.format(path)}|}">
+            <p th:text="${@displayPathFormatter.format(path)}"></p>
+        </a>
+    </li>
+</ul>
+<div th:insert="footer :: footer"></div>
+</body>
